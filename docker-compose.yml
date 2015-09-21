@@ -1,0 +1,21 @@
+redis:
+  image: archivebot-redis
+  container_name: archivebot-redis
+  environment:
+    - SSH_USER=YOURUSERNAMEHERE
+  volumes:
+    - /srv/docker/archivebot/id_archivebot:/home/archivebot/.ssh/id_rsa
+pipeline:
+  image: archivebot-pipeline
+  container_name: archivebot-pipeline
+  links:
+    - redis
+  volumes:
+    - /srv/docker/archivebot/warcs4fos:/home/archivebot/warcs4fos
+    - /srv/docker/archivebot/logs:/home/archivebot/logs
+    - /srv/docker/archivebot/data:/home/archivebot/data
+uploader:
+  image: archivebot-uploader
+  container_name: archivebot-uploader
+  volumes:
+    - /srv/docker/archivebot/warcs4fos:/home/archivebot/warcs4fos
