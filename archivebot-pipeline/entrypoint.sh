@@ -9,7 +9,7 @@ USERMAP_UID=${USERMAP_UID:-$USERMAP_ORIG_UID}
 if [[ ${USERMAP_UID} != ${USERMAP_ORIG_UID} ]] || [[ ${USERMAP_GID} != ${USERMAP_ORIG_GID} ]]; then
   groupmod -g ${USERMAP_GID} ${ARCHIVEBOT_USER}
   usermod -u ${USERMAP_UID} ${ARCHIVEBOT_USER}
-  chown -h ${ARCHIVEBOT_USER}:${ARCHIVEBOT_USER} /home/${ARCHIVEBOT_USER}
+  chown -h -R ${ARCHIVEBOT_USER}:${ARCHIVEBOT_USER} /home/${ARCHIVEBOT_USER}
 fi
 
 cd /home/archivebot/
