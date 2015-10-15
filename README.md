@@ -26,7 +26,7 @@ The Archivebot Pipeline requests job from a redis database hosted by the Archive
 2. Build the docker image
 `docker build -t archivebot-redis .`
 3. Run the docker image
-`docker run --name archivebot-redis -it --rm -e "USERMAP_UID=$(id -u archivebot)" -e "USERMAP_GID=$(id -g archivebot)" -e "SSH_USER=YOURUSERHERE" -v "/srv/docker/archivebot/id_rsa:/home/archivebot/.ssh/id_rsa:ro" -p docker-archivebot-redis`
+`docker run --name archivebot-redis -it --rm -e "USERMAP_UID=$(id -u archivebot)" -e "USERMAP_GID=$(id -g archivebot)" -e "SSH_USER=YOURUSERHERE" -v "/srv/docker/archivebot/id_rsa:/home/archivebot/.ssh/id_rsa:ro" -P archivebot-redis`
 
 ## Configuration
 Some settings can be overridden from the default values by setting environment variables in the container. Typically the only thing to change is the ssh username
